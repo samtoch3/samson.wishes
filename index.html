@@ -88,6 +88,19 @@
             font-family: "Poppins", sans-serif;
         }
         
+        .texte-defilant {
+            margin: 40px 0;
+            padding: 0 20px; 
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            color: #c5c5c5;
+            display: block;
+            left: 0%;
+            top: 10%;
+            width: 100%;
+            height: 10%;
+        }
+        
         .background {
             background-image: url("background.jpg");
             opacity: 0.9;
@@ -105,6 +118,11 @@
 
 <body>
     <div class="background">
+        <div class="texte-defilant">
+            <marquee>
+                Tout comme l'étoile dorée illumine le sapin, je vous souhaite ainsi qu'à vos proches, mes voeux les meilleurs pour que votre noël soit plein de joie, de rire et que votre nouvelle année soit remplie de bonheur.
+            </marquee>
+            </div>
         <div class="popup">
             <button id="close">&times;</button>
             <h2>Samson vous souhaite un joyeux noël et une bonne année 2023.</h2>
@@ -113,7 +131,7 @@
                 <br/>
                 <audio id="🔊" class="play-music" src="./We Wish You a Merry Christmas.mp3?dl=0" controls autoplay loop>
             </p>
-            <a>Cliquez-ici !</a>
+            <a id="close">Cliquez-ici pour fermer !</a>
         </div>
     </div>
 <canvas></canvas>
