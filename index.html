@@ -135,21 +135,7 @@
         </div>
     </div>
 <canvas></canvas>
-    <!--<audio id="🔊" class="play-music" src="./We Wish You a Merry Christmas.mp3?dl=0" controls autoplay loop autostart>-->
-        
-        <div>
-    <object data="./We Wish You a Merry Christmas.mp3?dl=0" type="audio/x-mpeg" width="0" height="0" >
-        <param name="src" value="./We Wish You a Merry Christmas.mp3?dl=0" />
-        <param name="controls" value="console" />
-        <param name="autostart" value="true" />
-        <param name="loop" value="true" />
-        <script type="text/javascript" >
-            <!--
-                document.write('<embed src="./We Wish You a Merry Christmas.mp3?dl=0" width="0" height="0" controls="console" loop="true" autostart="true" ></embed>');
-            //-->
-        </script>
-    </object>
-</div>
+    <audio id="🔊" class="play-music" src="./We Wish You a Merry Christmas.mp3?dl=0" controls autoplay loop autostart>
 
 
     <!--Script-->
@@ -159,7 +145,7 @@
                 function open(event) {
                     document.querySelector(".popup").style.display = "block";
                 },
-                1000
+                2000
             )
         });
 
@@ -236,11 +222,11 @@
     </script>
 
     <script type="text/javascript">
-        //window.addEventListener("mouseover", play);
-        //window.addEventListener("click", play);
+        window.addEventListener("mouseover", play);
+        window.addEventListener("click", play);
 
         function play() {
-            //document.getElementById("🔊").play();
+            document.getElementById("🔊").play();
         }
     </script>
 </body>
