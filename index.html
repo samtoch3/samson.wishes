@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!--Icon-->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!--Title-->
+    <title>Souhaits de Samson...</title>
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!--Stylesheets-->
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0f72e5;
+            margin: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .popup {
+            background-color: #ffffff;
+            width: 450px;
+            padding: 30px 40px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+            border-radius: 8px;
+            font-family: "Poppins", sans-serif;
+            display: none;
+            text-align: center;
+        }
+        
+        .popup button {
+            display: block;
+            margin: 0 0 20px auto;
+            background-color: transparent;
+            font-size: 30px;
+            color: #c5c5c5;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .popup p {
+            font-size: 14px;
+            text-align: justify;
+            margin: 20px 0;
+            line-height: 25px;
+        }
+        
+        .play-music {
+            display: none;
+        }
+        
+        a {
+            display: block;
+            width: 200px;
+            position: relative;
+            margin: 10px auto;
+            text-align: center;
+            background-color: red;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px 0;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        p {
+            font-size: 3vmin;
+            line-height: 2em;
+            letter-spacing: 0.05em;
+            text-align: justify;
+            margin: 50px 0;
+            padding: 0 30px;
+        }
+        
+        .background {
+            background-image: url("background.jpg");
+            opacity: 0.9;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-position: 50% 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="popup">
+            <button id="close">&times;</button>
+            <h2>Samson vous souhaite un joyeux noël et une bonne année 2023.</h2>
+            <p>
+                Tout comme l'étoile dorée illumine le sapin, je souhaite que cette pop-in éclaire et innonde votre vie de bonheur. Mes meilleurs voeux pour un noël plein de joie et une nouvelle année remplie de bonheur. Que votre noël soit plein, de rire, de bonne volonté...
+                <br/><br/>
+                <audio id="🔊" class="play-music" src="./We Wish You a Merry Christmas.mp3?dl=0" controls autoplay loop>
+            </p>
+            <a>Cliquez-ici !</a>
+        </div>
+        <canvas></canvas>
+    </div>
+
+    
+
+    <!--Script-->
+    <script>
+        window.addEventListener("load", function() {
+            setTimeout(
+                function open(event) {
+                    document.querySelector(".popup").style.display = "block";
+                },
+                1000
+            )
+        });
+
+
+        document.querySelector("#close").addEventListener("click", function() {
+            document.querySelector(".popup").style.display = "none";
+        });
+    </script>
+
+    <script>
+        let calcScrollValue = () => {
+            let scrollProgress = document.getElementById("progress");
+            let progressValue = document.getElementById("progress-value");
+            let pos = document.documentElement.scrollTop;
+            let calcHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+            let scrollValue = Math.round((pos * 100) / calcHeight);
+            if (pos > 100) {
+                scrollProgress.style.display = "grid";
+            } else {
+                scrollProgress.style.display = "none";
+            }
+            scrollProgress.addEventListener("click", () => {
+                document.documentElement.scrollTop = 0;
+            });
+            scrollProgress.style.background = `conic-gradient(#03cc65 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+        };
+
+        window.onscroll = calcScrollValue;
+        window.onload = calcScrollValue;
+    </script>
+
+    <script>
+        var t = 0;
+        var c = document.querySelector("canvas");
+        var $ = c.getContext('2d');
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        $.fillStyle = 'hsla(0,0%,0%,1)';
+
+        window.addEventListener('resize', function() {
+            c.width = window.innerWidth;
+            c.height = window.innerHeight;
+        }, false);
+
+        function draw() {
+            $.globalCompositeOperation = 'source-over';
+            $.fillStyle = 'hsla(0,0%,0%,.1)';
+            $.fillRect(0, 0, c.width, c.height);
+            var foo, i, j, r;
+            foo = Math.sin(t) * 2 * Math.PI;
+            for (i = 0; i < 400; ++i) {
+                r = 400 * Math.sin(i * foo);
+                $.globalCompositeOperation = '';
+                $.fillStyle = 'hsla(' + i + 12 + ',100%, 60%,1)';
+                $.beginPath();
+                $.arc(Math.sin(i) * r + (c.width / 2),
+                    Math.cos(i) * r + (c.height / 2),
+                    1.5, 0, Math.PI * 2);
+                $.fill();
+
+            }
+            t += 0.000005;
+            return t %= 2 * Math.PI;
+
+        };
+
+        function run() {
+            window.requestAnimationFrame(run);
+            draw();
+        }
+        run();
+    </script>
+
+    <script type="text/javascript">
+        window.addEventListener("mouseover", play);
+        window.addEventListener("click", play);
+
+        function play() {
+            document.getElementById("🔊").play();
+        }
+    </script>
+</body>
+
+</html>
