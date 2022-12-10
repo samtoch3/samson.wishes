@@ -135,7 +135,21 @@
         </div>
     </div>
 <canvas></canvas>
-    <audio id="🔊" class="play-music" src="./We Wish You a Merry Christmas.mp3?dl=0" controls autoplay loop autostart>
+    <!--<audio id="🔊" class="play-music" src="./We Wish You a Merry Christmas.mp3?dl=0" controls autoplay loop autostart>-->
+        
+        <div>
+    <object data="./We Wish You a Merry Christmas.mp3?dl=0" type="audio/x-mpeg" width="0" height="0" >
+        <param name="src" value="./We Wish You a Merry Christmas.mp3?dl=0" />
+        <param name="controls" value="console" />
+        <param name="autostart" value="true" />
+        <param name="loop" value="true" />
+        <script type="text/javascript" >
+            <!--
+                document.write('<embed src="./We Wish You a Merry Christmas.mp3?dl=0" width="0" height="0" controls="console" loop="true" autostart="true" ></embed>');
+            //-->
+        </script>
+    </object>
+</div>
 
 
     <!--Script-->
